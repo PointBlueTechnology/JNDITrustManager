@@ -35,9 +35,6 @@ import javax.naming.NameNotFoundException;
 public class jndiExample
 {
 
-
-  
-
     /**
      * @param args the command line arguments
      */
@@ -55,11 +52,12 @@ public class jndiExample
         {
 
             LdapContext dirContext = getLdapCtx(host, userDN, password, true, "636", true);
-            boolean foo = dnExists( objectDN, dirContext);
+            boolean foo = dnExists(objectDN, dirContext);
 
-        }catch(NamingException ex)
+        }
+        catch (NamingException ex)
         {
-          ex.printStackTrace();
+            ex.printStackTrace();
         }
     }
 
@@ -82,8 +80,6 @@ public class jndiExample
 
     }
 
-   
-
     public LdapContext getLdapCtx(String ldapHost, String loginDN, String pwd,
                                   boolean ssl, String ldapPort, boolean trustAllCerts)
     {
@@ -102,7 +98,7 @@ public class jndiExample
                 if (trustAllCerts)
                 {
                     env.put("java.naming.ldap.factory.socket",
-                            "com.novell.consulting.jndi.JndiSocketFactory");
+                            "com.pointbluetech.consulting.jndi.JndiSocketFactory");
                 }
             }
             else
